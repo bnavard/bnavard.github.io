@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pouyan Boreshnavard on Pouyan Boreshnavard</title>
+    <link>https://github.com/bnavard</link>
+    <description>Recent content in Pouyan Boreshnavard on Pouyan Boreshnavard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2024 Pouyan Boreshnavard</copyright>
+    <lastBuildDate>Fri, 4 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A Probabilistic-based Drift Correction Module for Visual Inertial SLAMs</title>
+      <link>https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/drift/vinsdrift.pdf</link>
+      <pubDate>Fri, 04 Oct 2024 02:01:33 -0500</pubDate>
+      
+    </item>
+    
+    <item>
+      <title>KNOBGEN: CONTROLLING THE SOPHISTICATION OF
+ARTWORK IN SKETCH-BASED DIFFUSION MODELS</title>
+      <link>https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/knobgen/knobgen.pdf</link>
+      <pubDate>Fri, 04 Oct 2024 02:01:33 -0500</pubDate>
+      
+    </item>
+    
+    <item>
+      <title>SegFormer3D: an Efficient Transformer for 3D Medical Image Segmentation</title>
+      <link>https://github.com/bnavard/pouyanbnd.github.io/tree/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/segformer3d</link>
+      <pubDate>Fri, 04 Oct 2024 02:01:33 -0500</pubDate>
+     
+    
+  </channel>
+</rss>
