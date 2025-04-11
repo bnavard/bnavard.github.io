@@ -29,12 +29,42 @@
     <meta property="og:locale" content="en-us">
     <meta property="og:updated_time" content="2024-08-20T00:00:00&#43;00:00">
     <title>Pouyan Boreshnavard</title>
+    <!-- Added custom style for the SegFormer3D toggle container -->
+    <style>
+        .segformer3d-container {
+            position: relative;
+            display: inline-block;
+        }
+        .segformer3d-container img {
+            width: 800px;
+            height: auto;
+            transition: opacity 0.5s ease;
+        }
+        .segformer3d-container button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
     <nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
         <div class="container">
-            <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="/">Pouyan Boreshnavard</a> </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Pouyan Boreshnavard</a>
+            </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"> <a href="/#about" data-target="#about"> <span>Home</span> </a> </li>
@@ -47,13 +77,16 @@
                 </ul>
             </div>
         </div>
-    </nav> <span id="homepage" style="display: none"></span>
+    </nav>
+    <span id="homepage" style="display: none"></span>
     <section id="about" class="home-section">
         <div class="container">
             <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="person-email person-address">
                 <div class="col-xs-12 col-md-4">
                     <div id="profile">
-                        <div class="portraitt"> <img style="border-radius: 150px; width:85%; height:100%;" src="https://raw.githubusercontent.com/bnavard/pouyanbnd.github.io/refs/heads/main/img/IMG_5986.jpeg" alt=""> </div>
+                        <div class="portraitt">
+                            <img style="border-radius: 150px; width:85%; height:100%;" src="https://raw.githubusercontent.com/bnavard/pouyanbnd.github.io/refs/heads/main/img/IMG_5986.jpeg" alt="">
+                        </div>
                         <div class="portrait-title">
                             <h2 itemprop="name">Pouyan Boreshnavard</h2>
                             <h3 itemprop="jobTitle">Graduate Research Assistant at the OSU</h3>
@@ -103,58 +136,85 @@
                 <div class="col-xs-12 col-md-8">
                     <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
                         <div class="row">
-                            <div class="col-md-12"> <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/drift/">
-                                    <!-- <img src="/img/vllm.png" class="pub-banner"
-                           itemprop="image"> -->
-                                </a> </div>
+                            <div class="col-md-12">
+                                <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/drift/">
+                                    <!-- <img src="/img/vllm.png" class="pub-banner" itemprop="image"> -->
+                                </a>
+                            </div>
                             <div class="col-md-12">
                                 <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
                                     <div class="row">
-                                        <div class="col-md-12"> <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/knobgen/">
-                                                <!-- <img src="/img/gaussian.png" class="pub-banner"
-                                    itemprop="image"> -->
-                                            </a> </div>
                                         <div class="col-md-12">
-                                            <h3 class="article-title" itemprop="name"> <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/knobgen/knobgen.pdf" itemprop="url">
+                                            <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/knobgen/">
+                                                <!-- <img src="/img/gaussian.png" class="pub-banner" itemprop="image"> -->
+                                            </a>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <h3 class="article-title" itemprop="name">
+                                                <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/knobgen/knobgen.pdf" itemprop="url">
                                                     <p style="font-size: 20px;">KnobGen: Controlling The Sophistication Of Artwork In Sketch-Based Diffusion Models </p>
-                                                </a> </h3>
+                                                </a>
+                                            </h3>
                                             <div> <img src="img/KnobGen.png" alt=""> </div>
                                             <div class="pub-abstract" itemprop="text"> KnobGen introduces a novel dual-pathway framework for sketch-based image generation, designed to adapt to varying levels of user skill and sketch complexity across the board. </div>
                                             <div class="pub-authors" itemprop="author"> Pouyan Navard, Amin Karimi Monsefi, Mengxi Zhou, Wei-Lun Chao, Alper Yilmaz, Rajiv Ramnath </div>
                                             <div class="pub-publication"> CVPR Workshop, 2025. </div>
-                                            <div class="pub-links"> <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/knobgen/knobgen.pdf" target="_blank" rel="noopener"> PDF </a> <button type="button" class="btn btn-primary btn-outline btn-xs js-cite-modal" data-filename="files/citations/knobgen.bib"> CITE </button> <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/aminK8/KnobGen" target="_blank" rel="noopener"> CODE </a> </div>
+                                            <div class="pub-links"> 
+                                                <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/knobgen/knobgen.pdf" target="_blank" rel="noopener"> PDF </a> 
+                                                <button type="button" class="btn btn-primary btn-outline btn-xs js-cite-modal" data-filename="files/citations/knobgen.bib"> CITE </button> 
+                                                <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/aminK8/KnobGen" target="_blank" rel="noopener"> CODE </a> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
                                     <div class="row">
-                                        <div class="col-md-12"> <a href="https://github.com/bnavard/pouyanbnd.github.io/tree/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/segformer3d">
-                                                <!-- <img src="/img/PACL.png" class="pub-banner"
-                                    itemprop="image"> -->
-                                            </a> </div>
                                         <div class="col-md-12">
-                                            <h3 class="article-title" itemprop="name"> <a href="https://github.com/bnavard/pouyanbnd.github.io/tree/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/segformer3d" itemprop="url">
+                                            <a href="https://github.com/bnavard/pouyanbnd.github.io/tree/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/segformer3d">
+                                                <!-- <img src="/img/PACL.png" class="pub-banner" itemprop="image"> -->
+                                            </a>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <h3 class="article-title" itemprop="name">
+                                                <a href="https://github.com/bnavard/pouyanbnd.github.io/tree/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/segformer3d" itemprop="url">
                                                     <p style="font-size: 20px;">SegFormer3D: an Efficient Transformer for 3D Medical Image Segmentation</p>
-                                                </a> </h3>
-                                            <div> <img src="img/segformer3d_paper_fig.PNG" alt=""> </div>
+                                                </a>
+                                            </h3>
+                                            <!-- Modified segformer3d image block with a toggle button -->
+                                            <div class="segformer3d-container">
+                                                <img id="segformer3dImage" src="img/segformer3d.gif" alt="Segformer3D">
+                                                <button id="slideButton">Show Paper Figure</button>
+                                            </div>
                                             <div class="pub-abstract" itemprop="text"> Segformer3D is a light-weight and efficient hierarchical Transformer designed for 3D volumetric segmentation. It calculates attention across multiscale volumetric features, and avoids complex decoders. Instead it uses a simple yet effective all-MLP decoder to aggregate local and global attention features to produce highly accurate segmentation masks. </div>
                                             <div class="pub-authors" itemprop="author"> Pouyan Navard, Shehan Perera, Alper Yilmaz </div>
                                             <div class="pub-publication"> CVPR Workshop, 2024. </div>
-                                            <div class="pub-links"> <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/segformer3d/Perera_SegFormer3D_An_Efficient_Transformer_for_3D_Medical_Image_Segmentation_CVPRW_2024_paper_6.pdf" target="_blank" rel="noopener"> PDF </a> <button type="button" class="btn btn-primary btn-outline btn-xs js-cite-modal" data-filename="files/citations/segformer3d.bib"> CITE </button> <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/OSUPCVLab/SegFormer3D" target="_blank" rel="noopener"> CODE </a> </div>
+                                            <div class="pub-links"> 
+                                                <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/segformer3d/Perera_SegFormer3D_An_Efficient_Transformer_for_3D_Medical_Image_Segmentation_CVPRW_2024_paper_6.pdf" target="_blank" rel="noopener"> PDF </a> 
+                                                <button type="button" class="btn btn-primary btn-outline btn-xs js-cite-modal" data-filename="files/citations/segformer3d.bib"> CITE </button> 
+                                                <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/OSUPCVLab/SegFormer3D" target="_blank" rel="noopener"> CODE </a> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="article-title" itemprop="name"> <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/drift/vinsdrift.pdf" itemprop="url">
+                                <h3 class="article-title" itemprop="name">
+                                    <a href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/drift/vinsdrift.pdf" itemprop="url">
                                         <p style="font-size: 20px;">A Probabilistic-based Drift Correction Module for Visual Inertial SLAMs</p>
-                                    </a> </h3>
+                                    </a>
+                                </h3>
                                 <div> <img src="img/vins_drift_paper_fig.png" alt=""> </div>
                                 <div class="pub-abstract" itemprop="text"> This paper presents a probabilistic-based drift correction module for improving the accuracy of Visual Inertial Simultaneous Localization and Mapping (SLAM) systems. The proposed method treats positioning measurements as stochastic variables in a multivariate distribution, incorporating geospatial priors to correct accumulated drift error. By optimizing the mode of this distribution, the approach reduces drift by up to ten times during long traverses. The module is designed to be compatible with various SLAM systems, enhancing their performance in GPS-denied or error-prone environments. </div>
                                 <div class="pub-authors" itemprop="author"> Pouyan Navard, Alper Yilmaz </div>
                                 <div class="pub-publication"> ISPRS, 2024. </div>
-                                <div class="pub-links"> <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/drift/vinsdrift.pdf" target="_blank" rel="noopener"> PDF </a> <a class="btn btn-primary btn-outline btn-xs" href="https://isprs-archives.copernicus.org/articles/XLVIII-2-2024/297/2024/" target="_blank" rel="noopener"> ISPRS </a> </div>
+                                <div class="pub-links"> 
+                                    <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/bnavard/pouyanbnd.github.io/blob/f8578da3d5602749c24c8e71a1cbeea35eac1d11/research_paper/drift/vinsdrift.pdf" target="_blank" rel="noopener"> PDF </a> 
+                                    <a class="btn btn-primary btn-outline btn-xs" href="https://isprs-archives.copernicus.org/articles/XLVIII-2-2024/297/2024/" target="_blank" rel="noopener"> ISPRS </a> 
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
     </section>
     <section id="experience" class="home-section">
         <div class="container">
@@ -183,9 +243,6 @@
                 </div>
             </div>
         </div>
-    </section>
-    </section>
-    </div>
     </section>
     <section id="talks" class="home-section">
         <div class="container">
@@ -246,6 +303,28 @@
         hljs.initHighlightingOnLoad();
     </script>
     <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=HtCmD8UGtQJCEhcx0iEzLxhL9ImTiXh4Ur1pZvyYzI0&cl=ffffff&w=a"></script>
+    <!-- JavaScript for SegFormer3D Toggle Functionality -->
+    <script>
+      document.getElementById('slideButton').addEventListener('click', function() {
+        var image = document.getElementById('segformer3dImage');
+        var button = document.getElementById('slideButton');
+        // Fade out the image
+        image.style.opacity = 0;
+        // Wait for the fade-out transition to complete (500ms)
+        setTimeout(function() {
+          // Toggle the image source between the GIF and the paper figure
+          if (image.src.indexOf("segformer3d.gif") !== -1) {
+            image.src = 'img/segformer3d_paper_fig.PNG';
+            button.innerText = "Show GIF";
+          } else {
+            image.src = 'img/segformer3d.gif';
+            button.innerText = "Show Paper Figure";
+          }
+          // Fade the new image back in
+          image.style.opacity = 1;
+        }, 500);
+      });
+    </script>
 </body>
 
 </html>
