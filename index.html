@@ -49,16 +49,16 @@
             .toggle-container {
                 position: relative;
                 display: inline-block;
-            }
-            .toggle-container img {
+              }
+              .toggle-container img {
                 width: 800px;
                 height: auto;
                 transition: opacity 0.5s ease;
-            }
-            .toggle-container button {
+              }
+              .toggle-container button {
                 position: absolute;
                 top: 50%;
-                right: 5px;
+                right: 3px;
                 transform: translateY(-50%);
                 padding: 4px 8px;
                 background: rgba(0, 0, 0, 0.6);
@@ -66,7 +66,7 @@
                 border: none;
                 cursor: pointer;
                 font-size: 1.5em;
-            }
+              }
         </style>
     </head>
 
@@ -424,64 +424,70 @@
         </script>
         <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=HtCmD8UGtQJCEhcx0iEzLxhL9ImTiXh4Ur1pZvyYzI0&cl=ffffff&w=a"></script>
         <!-- JavaScript for Toggle Functionality -->
+        
         <script>
-            // SegFormer3D Toggle Functionality
-            document.getElementById("segformerSlideButton").addEventListener("click", function () {
-                var image = document.getElementById("segformer3dImage");
-                var button = document.getElementById("segformerSlideButton");
-                var icon = button.querySelector("i");
-
-                // Fade out image
-                image.style.opacity = 0;
-
-                // Wait for fade-out duration (500ms)
-                setTimeout(function () {
-                    // Check if the current image is the animated GIF
-                    if (image.src.indexOf("segformer3d.gif") !== -1) {
-                        image.src = "img/segformer3d_paper_fig.PNG";
-                        // Change arrow from left to right
-                        icon.classList.remove("fa-angle-left");
-                        icon.classList.add("fa-angle-right");
-                    } else {
-                        // Force the GIF to restart by appending a timestamp
-                        image.src = "img/segformer3d.gif?v=" + new Date().getTime();
-                        // Change arrow from right back to left
-                        icon.classList.remove("fa-angle-right");
-                        icon.classList.add("fa-angle-left");
-                    }
-                    // Fade image back in
-                    image.style.opacity = 1;
-                }, 500);
+            // Utility function: Wait for the opacity transition to end
+            function onOpacityTransitionEnd(image, callback) {
+              var handler = function(e) {
+                if (e.propertyName === 'opacity') {
+                  image.removeEventListener('transitionend', handler);
+                  callback();
+                }
+              };
+              image.addEventListener('transitionend', handler);
+            }
+            
+            // SegFormer3D Toggle
+            document.getElementById('segformerSlideButton').addEventListener('click', function() {
+              var image = document.getElementById('segformer3dImage');
+              var button = document.getElementById('segformerSlideButton');
+              var icon = button.querySelector('i');
+              
+              // Trigger fade-out by setting opacity to 0.
+              image.style.opacity = 0;
+              
+              // Once fade-out finishes, toggle image source.
+              onOpacityTransitionEnd(image, function() {
+                if (image.src.indexOf("segformer3d.gif") !== -1) {
+                  image.src = 'img/segformer3d_paper_fig.PNG';
+                  icon.classList.remove('fa-angle-left');
+                  icon.classList.add('fa-angle-right');
+                } else {
+                  // Force restart of GIF with a timestamp query parameter.
+                  image.src = 'img/segformer3d.gif?v=' + new Date().getTime();
+                  icon.classList.remove('fa-angle-right');
+                  icon.classList.add('fa-angle-left');
+                }
+                // Fade back in.
+                image.style.opacity = 1;
+              });
             });
-
-            // KnobGen Toggle Functionality
-            document.getElementById("knobgenSlideButton").addEventListener("click", function () {
-                var image = document.getElementById("KnobGenImage");
-                var button = document.getElementById("knobgenSlideButton");
-                var icon = button.querySelector("i");
-
-                // Fade out image
-                image.style.opacity = 0;
-
-                // Wait for fade-out duration (500ms)
-                setTimeout(function () {
-                    // Check if the current image is the animated GIF
-                    if (image.src.indexOf("knob_gen_transition.gif") !== -1) {
-                        image.src = "img/KnobGen.png";
-                        // Change arrow from left to right
-                        icon.classList.remove("fa-angle-left");
-                        icon.classList.add("fa-angle-right");
-                    } else {
-                        // Force the GIF to restart by appending a timestamp
-                        image.src = "img/knob_gen_transition.gif?v=" + new Date().getTime();
-                        // Change arrow from right back to left
-                        icon.classList.remove("fa-angle-right");
-                        icon.classList.add("fa-angle-left");
-                    }
-                    // Fade image back in
-                    image.style.opacity = 1;
-                }, 500);
+            
+            // KnobGen Toggle
+            document.getElementById('knobgenSlideButton').addEventListener('click', function() {
+              var image = document.getElementById('KnobGenImage');
+              var button = document.getElementById('knobgenSlideButton');
+              var icon = button.querySelector('i');
+              
+              // Trigger fade-out by setting opacity to 0.
+              image.style.opacity = 0;
+              
+              // Once fade-out is complete, toggle image source.
+              onOpacityTransitionEnd(image, function() {
+                if (image.src.indexOf("knob_gen_transition.gif") !== -1) {
+                  image.src = 'img/KnobGen.png';
+                  icon.classList.remove('fa-angle-left');
+                  icon.classList.add('fa-angle-right');
+                } else {
+                  // Force restart of GIF using a unique query parameter.
+                  image.src = 'img/knob_gen_transition.gif?v=' + new Date().getTime();
+                  icon.classList.remove('fa-angle-right');
+                  icon.classList.add('fa-angle-left');
+                }
+                // Fade back in.
+                image.style.opacity = 1;
+              });
             });
-        </script>
+          </script>
     </body>
 </html>
