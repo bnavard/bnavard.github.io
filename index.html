@@ -6,7 +6,7 @@
       <meta name="author" content="Pouyan B. Navard">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta property="og:title" content="Pouyan Navard, PhD">
-      <meta property="og:description" content="Computer Vision Engineer at Path Robotics Inc. | PhD from The Ohio State University">
+      <meta property="og:description" content="Computer Vision Engineer | 3D Perception, Generative Models & Multimodal Learning | PhD from The Ohio State University">
       <meta property="og:image" content="images/PouyanNavard.jpeg">
       <meta property="og:type" content="website">
       <meta name="twitter:card" content="summary">
@@ -15,7 +15,7 @@
       <link rel="stylesheet" type="text/css" href="stylesheet.css">
    </head>
    <body>
-      <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+      <table style="width:100%;max-width:980px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
          <tbody>
             <tr style="padding:0px">
                <td style="padding:0px">
@@ -27,8 +27,10 @@
                                  Pouyan Navard
                               </p>
                               <p>
-                                 I'm a computer vision engineer at <a href="https://www.path-robotics.com/" target="_blank">Path Robotics Inc.</a> working on the perception stack for robot learning applications. I did my PhD at <a href="https://www.osu.edu/" target="_blank">The Ohio State University</a>, where I was advised by <a href="https://ceg.osu.edu/people/yilmaz.15" target="_blank">Alper Yilmaz</a>. 
-                                 During my PhD I focused on self-supervised representation learning on 3D volumetric images. I've received the <a href="https://my.asprs.org/2022Conference/2022Conference/Awards---Scholarships.aspx" target="_blank">Robert E. Altenhofen Memorial Award</a>.
+                                 I'm a computer vision engineer at <a href="https://www.path-robotics.com/" target="_blank">Path Robotics Inc.</a>, where I build end-to-end deep learning systems for generalizable robotic robotics and 3D neural asset generation. I did my PhD at <a href="https://www.osu.edu/" target="_blank">The Ohio State University</a>, where I was advised by <a href="https://ceg.osu.edu/people/yilmaz.15" target="_blank">Alper Yilmaz</a>. I've received the <a href="https://my.asprs.org/2022Conference/2022Conference/Awards---Scholarships.aspx" target="_blank">Robert E. Altenhofen Memorial Award</a>.
+                              </p>
+                              <p>
+                                 During my PhD at the <a href="https://pcvlab.engineering.osu.edu/" target="_blank">Photogrammetric Computer Vision Lab</a>, I studied self-supervised learning on 3D volumetric data, diffusion-based generative models, and vision-language reasoning. That research now shapes my work at Path Robotics, where I design deep learning systems for robotic perception&mdash;including multimodal backbones for generalized robotics, diffusion-based 3D asset generation for simulation, and the MLOps infrastructure that ties it all together.
                               </p>
                               <p style="text-align:center">
                                  <a href="mailto:bnd.pouyan@gmail.com" target="_blank">Email</a> &nbsp;/&nbsp;
@@ -45,13 +47,14 @@
                         </tr>
                      </tbody>
                   </table>
+                  <!-- Research Section -->
                   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                      <tbody>
                         <tr>
                            <td style="padding:16px;width:100%;vertical-align:middle">
                               <h2>Research</h2>
                               <p>
-                                 I am currently researching on multi modal video gneration models.
+                                 My research spans 3D perception, diffusion-based generative modeling, and multimodal vision-language learning. I am currently working on controllable multi-modal video generation models and scalable simulation-driven learning for robotic perception.
                               </p>
                            </td>
                         </tr>
@@ -59,30 +62,38 @@
                   </table>
                   <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                      <tbody>
-                        <!-- KnobGen Paper -->
-                        <tr onmouseout="knobgen_stop()" onmouseover="knobgen_start()">
-                           <td style="padding:16px;width:20%;vertical-align:middle">
-                              <div class="one">
-                                 <div class="two" id='knobgen_image'>
-                                    <video  width=100% height=100% muted autoplay loop>
-                                       <source src="images/knobgen_transition.mp4" type="video/mp4">
-                                       Your browser does not support the video tag.
-                                    </video>
-                                 </div>
-                                 <img src='images/knob_gen.jpg' width="160">
-                              </div>
-                              <script type="text/javascript">
-                                 function knobgen_start() {
-                                   document.getElementById('knobgen_image').style.opacity = "1";
-                                 }
-                                 
-                                 function knobgen_stop() {
-                                   document.getElementById('knobgen_image').style.opacity = "0";
-                                 }
-                                 knobgen_stop()
-                              </script>
+                        <!-- LLaVA-LE Paper (equal contribution) -->
+                        <tr bgcolor="#f0f6ff">
+                           <td style="padding:16px;width:30%;vertical-align:middle">
+                              <img src='images/llava_le_demo.gif' style="width:100%;max-width:300px;height:auto;display:block;">
+                              <p style="text-align:center;font-size:13px;color:#666;margin:6px 0 0 0;">LLaVA-LE captioning and QA on lunar imagery.</p>
                            </td>
-                           <td style="padding:8px;width:80%;vertical-align:middle">
+                           <td style="padding:8px;width:70%;vertical-align:middle">
+                              <span class="papertitle">LLaVA-LE: Large Language-and-Vision Assistant for Lunar Exploration</span>
+                              <br>
+                              <div style="margin-top: 7px;"></div>
+                              Gokce Inal*,
+                              <strong>Pouyan Navard</strong>*,
+                              Alper Yilmaz
+                              <br>
+                              <span style="font-size: 12px;">* Equal technical contribution</span>
+                              <br>
+                              <em>arXiv 2025 (under review)</em>
+                              <p>
+                                 We introduce LLaVA-LE, a <b>vision-language model for lunar surface and subsurface characterization</b>. We curate <b>LUCID</b>, a new dataset of <b>96k panchromatic images</b> with scientific captions and <b>81k QA pairs</b> from NASA missions. Fine-tuned with a <b>two-stage curriculum</b>, LLaVA-LE achieves a <b>3.3x gain</b> over base LLaVA, with reasoning scores <b>exceeding the judge's own reference</b>.
+                              </p>
+                           </td>
+                        </tr>
+                        <!-- KnobGen Paper -->
+                        <tr bgcolor="#ffffe2">
+                           <td style="padding:16px;width:30%;vertical-align:middle">
+                              <video width="100%" style="max-width:300px;display:block;" muted autoplay loop playsinline>
+                                 <source src="images/knobgen_transition.mp4" type="video/mp4">
+                                 <img src='images/knob_gen.jpg' style="width:100%;max-width:300px;height:auto;">
+                              </video>
+                              <p style="text-align:center;font-size:13px;color:#666;margin:6px 0 0 0;">Sketch-to-image generation with adjustable detail.</p>
+                           </td>
+                           <td style="padding:8px;width:70%;vertical-align:middle">
 							  <span class="papertitle">KnobGen: Controlling the Sophistication of Artwork in Sketch-Based Diffusion Models</span>
                               <br>
 							  <div style="margin-top: 7px;"></div> <!-- vertical space -->
@@ -100,41 +111,27 @@
                               <a href="https://arxiv.org/abs/2410.01595" target="_blank">arXiv</a>
                               <p></p>
                               <p>
-                                 We introduce KnobGen, a dual-pathway framework that bridges the gap between novice sketches and expert-level image generation. 
-                                 Our system dynamically balances fine-grained detail and high-level control using adjustable modules, high-quality results from any sketch.
+                                 We introduce KnobGen, a <b>dual-pathway framework</b> that bridges the gap between <b>novice sketches and expert-level image generation</b>.
+                                 Our system dynamically balances <b>fine-grained detail and high-level control</b> using adjustable modules, producing high-quality results from any sketch.
                               </p>
                            </td>
                         </tr>
-                        <!-- SegFormer3D Paper -->
-                        <tr onmouseout="segformer3d_stop()" onmouseover="segformer3d_start()">
-                           <td style="padding: 16px; width: 20%; vertical-align: middle;">
-                              <div style="position: relative; width: 160px; height: auto;">
-                                 <!-- The still image -->
-                                 <img src="images/segformer3d.jpeg" width="160" style="display: block; width: 100%; height: auto; transform: translateY(1.5px);">
-                                 <!-- The video overlay -->
-                                 <div id="segformer3d_image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.3s;">
-                                    <video width="100%" height="100%" muted autoplay loop>
-                                       <source src="images/segformer3d_transition.mp4" type="video/mp4">
-                                       Your browser does not support the video tag.
-                                    </video>
-                                 </div>
-                              </div>
-                              <script type="text/javascript">
-                                 function segformer3d_start() {
-                                 document.getElementById('segformer3d_image').style.opacity = "1";
-                                 }
-                                 
-                                 function segformer3d_stop() {
-                                 document.getElementById('segformer3d_image').style.opacity = "0";
-                                 }
-                                 segformer3d_stop();
-                              </script>
+                        <!-- SegFormer3D Paper (equal contribution) -->
+                        <tr bgcolor="#f0f6ff">
+                           <td style="padding: 16px; width: 30%; vertical-align: middle;">
+                              <video width="100%" style="max-width:300px;display:block;" muted autoplay loop playsinline>
+                                 <source src="images/segformer3d_transition.mp4" type="video/mp4">
+                                 <img src="images/segformer3d.jpeg" style="width:100%;max-width:300px;height:auto;">
+                              </video>
+                              <p style="text-align:center;font-size:13px;color:#666;margin:6px 0 0 0;">3D medical image segmentation results.</p>
                            </td>
-                           <td style="padding: 8px; width: 80%; vertical-align: middle;">
+                           <td style="padding: 8px; width: 70%; vertical-align: middle;">
                               <span class="papertitle">SegFormer3D: an Efficient Transformer for 3D Medical Image Segmentation</span>
                               <br>
 							  <div style="margin-top: 7px;"></div> <!-- vertical space -->
-                              Shehan Pererra, <strong>Pouyan Navard</strong>, Alper Yilmaz
+                              Shehan Pererra*, <strong>Pouyan Navard</strong>*, Alper Yilmaz
+                              <br>
+                              <span style="font-size: 12px;">* Equal contribution</span>
                               <br>
                               <em>CVPR 2024, 
                               <a href="https://cvpr.thecvf.com/virtual/2024/workshop/23663" target="_blank">DEF-AI-MIA Workshop</a>
@@ -143,7 +140,7 @@
                               <a href="https://osupcvlab.github.io/SegFormer3D/" target="_blank">Project Page</a> /
                               <a href="https://openaccess.thecvf.com/content/CVPR2024W/DEF-AI-MIA/html/Perera_SegFormer3D_An_Efficient_Transformer_for_3D_Medical_Image_Segmentation_CVPRW_2024_paper.html" target="_blank">CVF</a>
                               <p>
-                                 SegFormer3D redefines 3D medical image segmentation with a lightweight hierarchical Transformer that rivals state-of-the-art models. By blending multi-scale volumetric attention with an all-MLP decoder, we achieve competitive accuracy while slashing parameter counts and compute needs.
+                                 SegFormer3D redefines 3D medical image segmentation with a <b>lightweight hierarchical Transformer</b> that rivals state-of-the-art models. By blending <b>multi-scale volumetric attention</b> with an <b>all-MLP decoder</b>, we achieve competitive accuracy with <b>33x fewer parameters</b> and <b>13x lower compute</b>.
                               </p>
                            </td>
                         </tr>
@@ -153,7 +150,7 @@
                      <tbody>
                         <tr>
                            <td>
-                              <h2>Miscellanea</h2>
+                              <h2>Micropapers &amp; Service</h2>
                            </td>
                         </tr>
                      </tbody>
@@ -178,8 +175,10 @@
                                  <h2>Academic Service</h2>
                               </div>
                            </td>
-                           <td style="padding:8px;width:80%;vertical-align:center">
-                              Reviewer for CVPR, ECCV, ICCV, ICLR, AVSS, ACCV, SIBGRAPI (2023-2025)
+                           <td style="padding:8px;width:80%;vertical-align:middle">
+                              <b>Journals:</b> IEEE TPAMI (2026)
+                              <br>
+                              <b>Conferences:</b> CVPR, ICCV, ECCV, ICLR, AVSS, ACCV, SIBGRAPI (2023&ndash;2025)
                            </td>
                         </tr>
 
