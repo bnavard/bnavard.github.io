@@ -22,7 +22,8 @@ body { margin: 0; background: #fff; color: #111; }
   z-index: 20;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 28px;
   padding: 10px 24px;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: saturate(160%) blur(10px);
