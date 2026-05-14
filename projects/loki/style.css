@@ -681,10 +681,75 @@ strong { font-size: inherit; }
 /* ---------- FOOTER ---------- */
 .back { text-align: center; margin-top: 48px; font-size: 15px; }
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- RESPONSIVE ----------
+   Tablet and phone tweaks. Goal: nothing horizontally overflows the viewport
+   except the intentionally-scrollable catalogue and comparison strips. */
+@media (max-width: 900px) {
+  .site-header  { padding: 8px 14px; }
+  .site-nav     { gap: 14px; }
+  .site-nav a   { font-size: 14px; }
+  .content      { padding: 32px 16px 64px; }
+  .block        { margin: 36px 0; }
+  .content h2   { font-size: 26px; }
+}
+
 @media (max-width: 640px) {
-  .compare-row { grid-template-columns: 1fr; }
-  /* On narrow screens the 5x4 grid is fine; just tighten the gap. */
-  .teaser-grid { gap: 2px; padding: 2px; }
+  /* Teaser: switch from 8x2 to 4x4 so tiles stay legible on a phone. */
+  :root { --teaser-cols: 4; --teaser-rows: 4; }
+
+  /* Tighter base type. */
+  body, p, a, td, th, tr, li, figcaption { font-size: 17px; line-height: 1.55; }
+  .lede        { font-size: 17px; }
+  .content h2  { font-size: 22px; }
+  .content     { padding: 24px 14px 56px; }
+  .block       { margin: 28px 0; scroll-margin-top: 60px; }
+
+  /* Header: drop the section nav (page is short enough to scroll), shrink
+     the brand. Keep the brand-mark button as the modal trigger. */
+  .site-header              { padding: 6px 12px; }
+  .site-header .brand-mark-btn { width: 32px; height: 32px; }
+  .site-header .brand-name     { font-size: 16px; }
+  .site-nav                 { display: none; }
+
+  /* Summary cards. */
+  .summary-item              { padding: 16px 16px 18px; }
+  .summary-item .summary-label { font-size: 18px; }
+  .summary-item p            { font-size: 17px; }
+
+  /* Gauges: two-up already, just shrink type/values. */
+  .gauges-grid     { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .gauge-card      { padding: 10px 8px 12px; }
+  .gauge-name      { font-size: 15px; }
+  .gauge-value     { font-size: 20px; }
+  .gauge-value .unit { font-size: 13px; }
+  .gauge-ratio     { font-size: 13px; }
+  .figure-note     { font-size: 13px; }
+
+  /* Modal. */
+  .loki-modal-title  { font-size: 26px; }
+  .loki-modal-content { padding: 20px 18px 24px; }
+  .loki-modal-content p { font-size: 16px; line-height: 1.55; }
+  .loki-modal-close  { width: 34px; height: 34px; font-size: 22px;
+                       top: -10px; right: -10px; }
+
+  /* Catalogue: smaller cards so one fits onscreen with the axis label. */
+  .catalog-item        { flex: 0 0 230px; }
+  .catalog-axis        { flex: 0 0 44px; padding-right: 10px; padding-bottom: 18px; }
+  .catalog-axis .axis-cell { font-size: 11px; letter-spacing: 0.08em; }
+  .carousel-btn        { width: 38px; height: 38px; font-size: 22px; }
+  .carousel-btn.prev   { left: 4px; }
+  .carousel-btn.next   { right: 4px; }
+
+  /* Comparison: narrower column floors so the horizontal-scroll strip feels
+     proportionate on a phone screen rather than enormously wide. */
+  .compare-grid {
+    grid-template-columns: minmax(70px, 1fr) repeat(6, minmax(130px, 2fr));
+    column-gap: 6px;
+  }
+  .compare-grid .col-head    { font-size: 12px; top: 52px; }
+  .compare-grid .col-input   { margin-right: 10px; }
+  .compare-grid .input-stack { margin-right: 10px; }
+  .compare-grid .input-label { font-size: 11px; }
+  .compare-grid .cell-ours img { box-shadow: 0 0 0 4px #fff5f5; }
 }
 
