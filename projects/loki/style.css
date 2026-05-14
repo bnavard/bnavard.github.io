@@ -575,7 +575,7 @@ strong { font-size: inherit; }
   background: #fff;
   z-index: 3;
 }
-.compare-grid .col-input     { color: #6b7280; }
+.compare-grid .col-input     { color: #6b7280; margin-right: 16px; }
 .compare-grid .col-base-head { color: #1d4ed8; }
 .compare-grid .col-ours-head {
   color: #b91c1c;
@@ -599,6 +599,7 @@ strong { font-size: inherit; }
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-right: 16px;
   gap: 4px;
 }
 /* Vertical delineator between the Inputs column and the outputs strip.
