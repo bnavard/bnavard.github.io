@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Anonymous submission &mdash; under double-blind review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="article">
+  <link rel="shortcut icon" href="../../images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body id="top">
+
+  <!-- Fixed top navigation. The brand-mark image is a button that opens the
+       "Why Loki?" modal; the brand-name text stays a quick link to the top. -->
+  <header class="site-header">
+    <div class="brand">
+      <button class="brand-mark-btn" id="whyLokiBtn" aria-label="Why Loki?">
+        <img class="brand-mark" src="../../images/loki/loki_illustration.jpg" alt="">
+      </button>
+      <a class="brand-name" href="#top">Loki</a>
+    </div>
+    <nav class="site-nav">
+      <a href="#summary">Summary</a>
+      <a href="#efficiency">Efficiency</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#comparison">Comparison</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       TEASER: static 8x2 banner of 16 portrait-animation gifs spanning the
+       full viewport width. Title overlays the grid via a centered scrim.
+       ============================================================ -->
+  <section class="teaser">
+    <div class="teaser-stage">
+      <div class="teaser-grid">
+        <img class="tile" src="../../images/loki/teaser/teaser_01.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_02.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_03.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_04.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_05.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_06.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_07.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_08.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_09.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_10.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_11.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_12.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_13.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_14.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_15.gif" alt="">
+        <img class="tile" src="../../images/loki/teaser/teaser_16.gif" alt="">
+      </div>
+
+      <div class="teaser-title">
+        <h1>Loki</h1>
+        <p class="subtitle">[Title anonymized &mdash; under double-blind review]</p>
+        <p class="authors"><em>Authors anonymized for double-blind review</em></p>
+        <p class="venue"><em>Under review</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="content">
+
+    <!-- SUMMARY ---------------------------------------------------- -->
+    <section class="block" id="summary">
+      <h2>Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-label">What Loki does</div>
+          <p>Turn a single photo into a moving portrait that copies expressions and head pose from a driver video &mdash; while staying the same person.</p>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">What makes it different</div>
+          <p>Don't stack more modules &mdash; <strong>replace the input</strong>. Pose and expression come from a parametric face model, already separated from identity.</p>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Why it matters</div>
+          <p><strong>43% fewer parameters &middot; 1,496&times; less training video</strong> vs. SOTA. Cross-identity for free. Leads on pose- and expression-following.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA EFFICIENCY GAUGES ------------------------------------ -->
+    <section class="block" id="efficiency">
+      <h2>How many clips did each model train on?</h2>
+      <p class="lede">
+        Every gauge uses the same scale (0 to 220k clips). Lower is better.
+        Loki sits firmly in the green while the biggest baselines pin into amber and red.
+      </p>
+      <div class="gauges-grid">
+        <div class="gauge-card">
+          <img class="gauge-img" src="../../images/loki/gauges/hunyuanportrait.png" alt="HunyuanPortrait training-clip gauge: needle pinned to the right in the red zone">
+          <div class="gauge-name">HunyuanPortrait</div>
+          <div class="gauge-value">202,500<span class="unit">&nbsp;clips</span></div>
+          <div class="gauge-ratio">19.0&times; Loki</div>
+        </div>
+        <div class="gauge-card">
+          <img class="gauge-img" src="../../images/loki/gauges/echomimic.png" alt="EchoMimic training-clip gauge: needle deep in the red zone">
+          <div class="gauge-name">EchoMimic</div>
+          <div class="gauge-value">166,000<span class="unit">&nbsp;clips</span></div>
+          <div class="gauge-ratio">15.6&times; Loki</div>
+        </div>
+        <div class="gauge-card loki-card">
+          <span class="gauge-tag">Ours</span>
+          <img class="gauge-img" src="../../images/loki/gauges/loki.png" alt="Loki training-clip gauge: needle at the far left of the green zone">
+          <div class="gauge-name">Loki</div>
+          <div class="gauge-value">10,649<span class="unit">&nbsp;clips</span></div>
+          <div class="gauge-ratio">1&times;</div>
+        </div>
+        <div class="gauge-card">
+          <img class="gauge-img" src="../../images/loki/gauges/sadtalker.png" alt="SadTalker training-clip gauge: needle in the amber zone">
+          <div class="gauge-name">SadTalker</div>
+          <div class="gauge-value">100,000<span class="unit">&nbsp;clips</span></div>
+          <div class="gauge-ratio">9.4&times; Loki</div>
+        </div>
+        <div class="gauge-card">
+          <img class="gauge-img" src="../../images/loki/gauges/xportrait.png" alt="X-Portrait training-clip gauge: needle in the green zone">
+          <div class="gauge-name">X-Portrait</div>
+          <div class="gauge-value">23,650<span class="unit">&nbsp;clips</span></div>
+          <div class="gauge-ratio">2.2&times; Loki</div>
+        </div>
+        <div class="gauge-card">
+          <img class="gauge-img" src="../../images/loki/gauges/anitalker.png" alt="AniTalker training-clip gauge: needle in the green zone">
+          <div class="gauge-name">AniTalker</div>
+          <div class="gauge-value">17,108<span class="unit">&nbsp;clips</span></div>
+          <div class="gauge-ratio">1.6&times; Loki</div>
+        </div>
+      </div>
+      <p class="figure-note">
+        Numbers are the upper-bound training-clip count reported by each method (paper Table&nbsp;1).
+      </p>
+    </section>
+
+    <!-- CATALOG OF EXAMPLES --------------------------------------- -->
+    <section class="block" id="catalogue">
+      <h2>Loki's Catalogue</h2>
+      <p class="lede">A reel of Loki outputs across identities and driving clips. Step through with the arrows.</p>
+      <div class="carousel-row">
+        <div class="catalog-axis">
+          <div class="axis-cell axis-inputs">Inputs</div>
+          <div class="axis-cell axis-output">Output</div>
+        </div>
+        <div class="carousel-wrap">
+        <button class="carousel-btn prev" data-target=".catalog-grid" aria-label="Previous examples">&lsaquo;</button>
+        <button class="carousel-btn next" data-target=".catalog-grid" aria-label="Next examples">&rsaquo;</button>
+      <div class="catalog-grid">
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_01_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_01_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_01.gif" alt=""></div>
+
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_12_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_12_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_12.gif" alt=""></div>
+
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_03_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_03_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_03.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_04_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_04_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_04.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_05_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_05_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_05.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_06_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_06_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_06.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_07_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_07_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_07.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_08_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_08_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_08.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_09_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_09_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_09.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_10_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_10_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_10.gif" alt=""></div>
+          
+        </figure>
+        <figure class="catalog-item">
+          <div class="catalog-inputs">
+            <div class="catalog-cell"><div class="cell-label label-input">Reference</div><img src="../../images/loki/catalog/example_11_source.png" alt=""></div>
+            <div class="catalog-cell"><div class="cell-label label-input">Driver</div><img src="../../images/loki/catalog/example_11_driver.gif" alt=""></div>
+          </div>
+          <div class="catalog-cell catalog-output"><img src="../../images/loki/catalog/example_11.gif" alt=""></div>
+          
+        </figure>
+
+      </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON (table of all baselines, one row per sample) ----- -->
+    <section class="block" id="comparison">
+      <h2>Comparison with SOTA</h2>
+      <p class="lede">
+        One row per sample. <strong>Reference</strong> identity and <strong>Driver</strong> motion
+        on the left; <strong>Loki</strong> followed by every baseline on the right.
+        Audio-driven baselines (EchoMimic, AniTalker, SadTalker) take <strong>reference + audio</strong>
+        as input &mdash; we show the driver video for visual consistency with the video-driven baselines;
+        the audio is synced to that driver clip.
+      </p>
+      <div class="compare-grid">
+        <div class="col-head col-input">Inputs</div>
+        <div class="col-head col-ours-head">Ours <span class="loki-sub">(Loki)</span></div>
+        <div class="col-head col-base-head">X-Portrait</div>
+        <div class="col-head col-base-head">HunyuanPortrait</div>
+        <div class="col-head col-base-head">EchoMimic</div>
+        <div class="col-head col-base-head">AniTalker</div>
+        <div class="col-head col-base-head">SadTalker</div>
+        <!-- hdtf/id_0058_id_0094 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0058_id_0094/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0058_id_0094/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0058_id_0094/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0058_id_0094/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0058_id_0094/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0058_id_0094/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0058_id_0094/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0058_id_0094/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0036_id_0075 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0036_id_0075/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0036_id_0075/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0036_id_0075/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0036_id_0075/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0036_id_0075/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0036_id_0075/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0036_id_0075/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0036_id_0075/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0052_id_0008 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0052_id_0008/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0052_id_0008/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0052_id_0008/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0052_id_0008/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0052_id_0008/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0052_id_0008/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0052_id_0008/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0052_id_0008/sadtalker.gif" alt=""></div>
+        <!-- talkvid/id_0006_id_0038 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0006_id_0038/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0006_id_0038/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0006_id_0038/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0006_id_0038/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0006_id_0038/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0006_id_0038/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0006_id_0038/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0006_id_0038/sadtalker.gif" alt=""></div>
+        <!-- talkvid/id_0008_id_0079 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0008_id_0079/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0008_id_0079/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0008_id_0079/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0079/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0079/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0079/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0079/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0079/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0008_id_0159 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0008_id_0159/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0008_id_0159/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0008_id_0159/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0159/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0159/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0159/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0159/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0008_id_0159/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0018_id_0104 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0018_id_0104/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0018_id_0104/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0018_id_0104/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0018_id_0104/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0018_id_0104/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0018_id_0104/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0018_id_0104/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0018_id_0104/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0016_id_0171 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0016_id_0171/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0016_id_0171/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0016_id_0171/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0016_id_0171/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0016_id_0171/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0016_id_0171/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0016_id_0171/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0016_id_0171/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0040_id_0157 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0040_id_0157/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0040_id_0157/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0040_id_0157/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0040_id_0157/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0040_id_0157/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0040_id_0157/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0040_id_0157/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0040_id_0157/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0024_id_0046 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0024_id_0046/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0024_id_0046/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0024_id_0046/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0024_id_0046/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0024_id_0046/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0024_id_0046/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0024_id_0046/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0024_id_0046/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0028_id_0025 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0028_id_0025/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0028_id_0025/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0028_id_0025/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0028_id_0025/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0028_id_0025/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0028_id_0025/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0028_id_0025/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0028_id_0025/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0004_id_0208 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0004_id_0208/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0004_id_0208/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0004_id_0208/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0004_id_0208/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0004_id_0208/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0004_id_0208/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0004_id_0208/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0004_id_0208/sadtalker.gif" alt=""></div>
+        <!-- hdtf/id_0033_id_0173 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0033_id_0173/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0033_id_0173/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0033_id_0173/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0033_id_0173/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0033_id_0173/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0033_id_0173/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0033_id_0173/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0033_id_0173/sadtalker.gif" alt=""></div>
+        <!-- talkvid/id_0010_id_0123 -->
+        <div class="input-stack">
+          <div class="input-item">
+            <div class="input-label">Reference</div>
+            <img src="../../images/loki/comparison/id_0010_id_0123/source.png" alt="">
+          </div>
+          <div class="input-item input-item--driver">
+            <div class="input-label">Driver</div>
+            <img src="../../images/loki/comparison/id_0010_id_0123/driver.gif" alt="">
+          </div>
+        </div>
+        <div class="cell cell-ours"><img src="../../images/loki/comparison/id_0010_id_0123/ours.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0010_id_0123/xportrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0010_id_0123/hunyuan_portrait.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0010_id_0123/echomimic.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0010_id_0123/anitalker.gif" alt=""></div>
+        <div class="cell"><img src="../../images/loki/comparison/id_0010_id_0123/sadtalker.gif" alt=""></div>
+      </div>
+    </section>
+
+    <p class="back"><a href="../../index.html">&larr; Back to home</a></p>
+  </main>
+
+  <!-- "Why Loki?" modal: opens when the brand icon in the header is clicked.
+       The illustration sits centered at low opacity; the text overlays it. -->
+  <div class="loki-modal" id="lokiModal" role="dialog" aria-modal="true" aria-labelledby="whyLokiTitle" hidden>
+    <div class="loki-modal-backdrop" data-close></div>
+    <div class="loki-modal-image-wrap">
+      <img class="loki-modal-image" src="../../images/loki/loki_illustration.jpg" alt="">
+      <button class="loki-modal-close" aria-label="Close" data-close>&times;</button>
+    </div>
+    <div class="loki-modal-content">
+      <h2 id="whyLokiTitle" class="loki-modal-title">Why &ldquo;Loki&rdquo;?</h2>
+      <p>
+        We named our method <strong>Loki</strong> after the enigmatic trickster figure from Norse mythology &mdash;
+        a character defined not by a fixed identity, but by transformation itself.
+      </p>
+      <p>
+        In medieval depictions, Loki is portrayed as theatrical, fluid, and almost uncanny: a being who moves between
+        appearances, roles, and forms. Unlike traditional heroes who embody stability, Loki embodies motion, imitation,
+        and metamorphosis. That symbolism resonates deeply with the goal of portrait animation.
+      </p>
+      <p>
+        Our method takes a static portrait and, through the guidance of a driving video, transforms it into a living
+        performance. Identity remains recognizable, yet expression, motion, gaze, and behavior continuously shift under
+        external control. Much like the mythological Loki, the portrait becomes capable of adopting movements and
+        mannerisms that were never originally present in the source image.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

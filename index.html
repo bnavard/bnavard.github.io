@@ -7,10 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta property="og:title" content="Pouyan Navard, PhD">
       <meta property="og:description" content="Computer Vision Engineer | 3D Perception, Generative Models & Multimodal Learning | PhD from The Ohio State University">
-      <meta property="og:image" content="images/PouyanNavard.jpeg">
       <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary">
-      <meta name="twitter:image" content="images/PouyanNavard.jpeg">
       <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
       <link rel="stylesheet" type="text/css" href="stylesheet.css">
    </head>
@@ -65,10 +62,29 @@
                   </table>
                   <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                      <tbody>
+                        <!-- Loki Paper -->
+                        <tr bgcolor="#ffffe2">
+                           <td style="padding:16px;width:30%;vertical-align:middle">
+                              <img src='images/loki/loki_illustration.jpg' style="width:100%;max-width:300px;height:auto;display:block;">
+                           </td>
+                           <td style="padding:8px;width:70%;vertical-align:middle">
+                              <span class="papertitle">[Title anonymized &mdash; under double-blind review]</span>
+                              <br>
+                              <div style="margin-top: 7px;"></div>
+                              <em>Authors anonymized for double-blind review</em>
+                              <br>
+                              <em>Under review</em>
+                              <br>
+                              <a href="projects/loki/index.html">Project Page</a>
+                              <p>
+                                 Portrait animation diffusion models stack trained modules for expression, pose, and identity to compensate for conditioning on RGB, where these axes are inseparable. Loki replaces that with an <b>identity-orthogonal parametric face model</b> on the driver and <b>lightweight key&ndash;value injection</b> for identity &mdash; using <b>~43% fewer inference parameters</b> and <b>1,496&times; less training video</b>, with cross-ID reenactment reducing to a coefficient substitution at inference.
+                              </p>
+                           </td>
+                        </tr>
                         <!-- LLaVA-LE Paper (equal contribution) -->
                         <tr bgcolor="#f0f6ff">
                            <td style="padding:16px;width:30%;vertical-align:middle">
-                              <img src='images/llava_le_demo.gif' style="width:100%;max-width:300px;height:auto;display:block;">
+                              <img src='images/llava_le/llava_le_demo.gif' style="width:100%;max-width:300px;height:auto;display:block;">
                               <p style="text-align:center;font-size:13px;color:#666;margin:6px 0 0 0;">LLaVA-LE captioning and QA on lunar imagery.</p>
                            </td>
                            <td style="padding:8px;width:70%;vertical-align:middle">
@@ -97,7 +113,7 @@
                         <tr>
                            <td style="padding:16px;width:30%;vertical-align:middle">
                               <div style="position:relative;display:inline-block;width:100%;max-width:300px;">
-                                 <img src='images/SeamCam.png' style="width:100%;height:auto;display:block;">
+                                 <img src='images/seamcam/SeamCam.png' style="width:100%;height:auto;display:block;">
                                  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);color:white;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;padding:10px;box-sizing:border-box;opacity:0;transition:opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
                                     Right-click and open the image in a new tab for better resolution
                                  </div>
@@ -132,8 +148,8 @@
                         <tr bgcolor="#ffffe2">
                            <td style="padding:16px;width:30%;vertical-align:middle">
                               <video width="100%" style="max-width:300px;display:block;" muted autoplay loop playsinline>
-                                 <source src="images/knobgen_transition.mp4" type="video/mp4">
-                                 <img src='images/knob_gen.jpg' style="width:100%;max-width:300px;height:auto;">
+                                 <source src="images/knobgen/knobgen_transition.mp4" type="video/mp4">
+                                 <img src='images/knobgen/knob_gen.jpg' style="width:100%;max-width:300px;height:auto;">
                               </video>
                               <p style="text-align:center;font-size:13px;color:#666;margin:6px 0 0 0;">Sketch-to-image generation with adjustable detail.</p>
                            </td>
@@ -164,8 +180,8 @@
                         <tr bgcolor="#f0f6ff">
                            <td style="padding: 16px; width: 30%; vertical-align: middle;">
                               <video width="100%" style="max-width:300px;display:block;" muted autoplay loop playsinline>
-                                 <source src="images/segformer3d_transition.mp4" type="video/mp4">
-                                 <img src="images/segformer3d.jpeg" style="width:100%;max-width:300px;height:auto;">
+                                 <source src="images/segformer3d/segformer3d_transition.mp4" type="video/mp4">
+                                 <img src="images/segformer3d/segformer3d.jpeg" style="width:100%;max-width:300px;height:auto;">
                               </video>
                               <p style="text-align:center;font-size:13px;color:#666;margin:6px 0 0 0;">3D medical image segmentation results.</p>
                            </td>

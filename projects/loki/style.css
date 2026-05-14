@@ -1,0 +1,689 @@
+/* Loki project page styles.
+   Layered on top of ../../stylesheet.css (which sets the Lato base + link colors). */
+
+:root {
+  --max-w: 1080px;
+  /* Wide banner layout: 8 cols x 2 rows of square tiles fills the page width
+     (100vw) at a 4:1 aspect ratio -> grid height = 25vw. */
+  --teaser-cols: 8;
+  --teaser-rows: 2;
+}
+
+body { margin: 0; background: #fff; color: #111; }
+
+/* ---------- FIXED SITE HEADER ----------
+   Pinned to the top of the viewport. Sits above the teaser banner and the
+   page content via a high z-index. */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+}
+.site-header .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #111;
+}
+.site-header .brand-mark-btn {
+  /* Round, button-shaped trigger for the "Why Loki?" modal. */
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms;
+}
+.site-header .brand-mark-btn:hover {
+  transform: scale(1.06);
+  border-color: #b91c1c;
+  box-shadow: 0 2px 10px rgba(185, 28, 28, 0.18);
+}
+.site-header .brand-mark-btn:focus-visible {
+  outline: 2px solid #b91c1c;
+  outline-offset: 2px;
+}
+.site-header .brand-mark {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.site-header .brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: inherit;
+}
+.site-header .brand-name:hover { color: #b91c1c; }
+
+/* ---------- "WHY LOKI?" MODAL ----------
+   Full-viewport overlay with a dark backdrop. The illustration sits centered
+   at low opacity (the "transparent mode" the brief asked for); the rationale
+   text overlays it in white. */
+.loki-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease;
+}
+.loki-modal:not([hidden]) {
+  visibility: visible;
+  opacity: 1;
+}
+.loki-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  /* Heavily faded but not opaque — a translucent dark veil with a strong
+     blur + slight desaturation behind it. The page underneath is barely
+     visible (just enough to feel we're still on the site), but no text or
+     detail competes with the modal content. */
+  background: rgba(8, 8, 12, 0.82);
+  backdrop-filter: blur(10px) saturate(0.5);
+  -webkit-backdrop-filter: blur(10px) saturate(0.5);
+  cursor: pointer;
+}
+/* Wrapper sized to the rendered image, so the close button can sit at the
+   image's top-right corner regardless of how the image scales. */
+.loki-modal-image-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Wrap has no intrinsic size; the img inside (with max-h/w) dictates it. */
+}
+.loki-modal-image {
+  display: block;
+  max-height: 92vh;
+  max-width: 92vw;
+  width: auto;
+  height: auto;
+  opacity: 0.20;             /* "transparent mode" — image visible but quiet */
+  pointer-events: none;
+  border-radius: 6px;
+}
+.loki-modal-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  width: min(760px, 92vw);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 28px 36px 32px;
+  color: #f9fafb;
+  text-align: left;
+  /* No card background — let the faded image read through. A soft inner
+     glow keeps text legible without making the dialog feel boxed in. */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+.loki-modal-title {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px 0;
+  color: #fff;
+  border: none;
+  padding: 0;
+}
+.loki-modal-content p {
+  font-size: 18px;
+  line-height: 1.65;
+  margin: 0 0 14px;
+  color: #f3f4f6;
+}
+.loki-modal-content p strong { color: #fff; }
+.loki-modal-close {
+  /* Sits at the image's top-right corner (offset slightly outside so it
+     reads as a corner control, not on top of the illustration). */
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: #1a1a22;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+.loki-modal-close:hover {
+  background: #2a2a35;
+  border-color: rgba(255, 255, 255, 0.85);
+}
+/* Stop the page behind the modal from scrolling while it's open. */
+body.modal-open { overflow: hidden; }
+.site-nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.site-nav a {
+  text-decoration: none;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 4px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 120ms, border-color 120ms;
+}
+.site-nav a:hover {
+  color: #b91c1c;
+  border-bottom-color: #b91c1c;
+}
+
+/* Sections need scroll-margin so click-to-anchor doesn't tuck the heading
+   under the fixed header. */
+.block { scroll-margin-top: 70px; }
+html { scroll-behavior: smooth; }
+
+/* ---------- GLOBAL FONT SIZE BUMP (project page only) ----------
+   The shared site stylesheet (../../stylesheet.css) sets body/p/a to 16px,
+   which is too tight for a long-form project page. We override on this page
+   only, leaving the home page untouched. */
+body, p, a, td, th, tr, li, figcaption { font-size: 19px; line-height: 1.55; }
+strong { font-size: inherit; }
+.content h2 { font-size: 32px; }
+.lede { font-size: 19px; line-height: 1.6; }
+
+/* ---------- TEASER (static banner; no scroll animation) ---------- */
+.teaser {
+  position: relative;
+  background: #000;
+}
+.teaser-stage {
+  position: relative;
+  width: 100%;
+}
+.teaser-grid {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(var(--teaser-cols), 1fr);
+  grid-template-rows:    repeat(var(--teaser-rows), 1fr);
+  gap: 2px;
+}
+.teaser-grid .tile {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #111;
+  display: block;
+  opacity: 0.75;
+}
+
+/* Title overlay covers the grid. Always visible. */
+.teaser-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+  padding: 0 24px;
+}
+.teaser-title h1 {
+  font-size: clamp(40px, 7vw, 96px);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.teaser-title .subtitle {
+  font-size: clamp(14px, 1.6vw, 22px);
+  margin: 6px 0 12px;
+  max-width: 900px;
+  font-weight: 400;
+}
+.teaser-title .authors {
+  font-size: clamp(13px, 1.4vw, 17px);
+  margin: 4px 0;
+}
+.teaser-title .venue { font-size: 15px; opacity: 0.85; margin: 6px 0 0; }
+
+/* ---------- CONTENT ---------- */
+.content {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+.block { margin: 48px 0; }
+.block h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+.lede { color: #555; margin-top: 0; }
+.highlights { padding-left: 20px; }
+.highlights li { margin: 6px 0; }
+
+/* Summary: three colored cards (What / Different / Why), each with a
+   distinct pastel background, a thin border, and a prominent heading. */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.summary-item {
+  padding: 22px 22px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+/* Three matching tints so the eye groups them as a row but can still
+   distinguish each card. Heading color picks up the card's accent. */
+.summary-item:nth-child(1) { background: #eef4ff; }                       /* cool blue   */
+.summary-item:nth-child(1) .summary-label { color: #0d47a1; }
+.summary-item:nth-child(2) { background: #fff5db; }                       /* warm cream  */
+.summary-item:nth-child(2) .summary-label { color: #8a5a00; }
+.summary-item:nth-child(3) { background: #e8f5ec; }                       /* mint        */
+.summary-item:nth-child(3) .summary-label { color: #1b6b3b; }
+
+.summary-item .summary-label {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.summary-item p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.55;
+  color: #1c1c1c;
+}
+@media (max-width: 720px) {
+  .summary-grid { grid-template-columns: 1fr; gap: 12px; }
+  .summary-item .summary-label { font-size: 20px; }
+}
+
+.figure { margin: 0; text-align: center; }
+.figure img { max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; }
+.figure figcaption { color: #666; font-size: 15px; margin-top: 8px; }
+
+/* ---------- DATA EFFICIENCY GAUGES ---------- */
+.gauges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gauge-card {
+  position: relative;
+  padding: 14px 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fafbfd;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gauge-card.loki-card {
+  border: 2px solid #e63946;
+  background: #fff5f5;
+  box-shadow: 0 2px 12px rgba(230, 57, 70, 0.12);
+}
+.gauge-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e63946;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.gauge-img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+}
+.gauge-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-top: 4px;
+}
+.loki-card .gauge-name { color: #e63946; }
+.gauge-value {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111;
+  margin-top: 2px;
+  line-height: 1.1;
+}
+.loki-card .gauge-value { color: #e63946; }
+.gauge-value .unit {
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b7280;
+}
+.gauge-ratio {
+  font-size: 15px;
+  color: #6b7280;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+.figure-note {
+  font-size: 15px;
+  color: #4b5563;
+  text-align: center;
+  margin-top: 22px;
+}
+@media (max-width: 720px) {
+  .gauges-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .gauge-value { font-size: 22px; }
+}
+
+/* ---------- CAROUSEL PREV/NEXT BUTTONS ----------
+   Used by both the catalogue and the SOTA comparison. The wrap is the
+   positioning context; buttons float on the left/right edges. */
+.carousel-wrap {
+  position: relative;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid #d4d4d8;
+  background: #fff;
+  color: #1f2937;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: background 120ms, transform 120ms, border-color 120ms;
+}
+.carousel-btn:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+.carousel-btn:active { transform: translateY(-50%) scale(0.96); }
+.carousel-btn.prev  { left:   8px; }
+.carousel-btn.next  { right:  8px; }
+.carousel-btn:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+/* ---------- LOKI'S CATALOGUE ----------
+   Same shape as the SOTA comparison carousel: a sticky vertical "Inputs /
+   Output" axis on the left, then horizontally scrolling sample cards. Each
+   card has Reference + Driver on top (inputs row) and Loki's animation
+   below (output row, larger). */
+.catalog-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.catalog-grid::-webkit-scrollbar { display: none; }
+.catalog-axis {
+  box-sizing: border-box;
+  flex: 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  padding-right: 18px;
+  padding-bottom: 26px;            /* room for figcaption row */
+}
+.catalog-axis .axis-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.catalog-axis .axis-inputs { flex: 152 0 0; color: #6b7280; }
+.catalog-axis .axis-output { flex: 294 0 0; color: #b91c1c; }
+
+.catalog-item {
+  margin: 0;
+  flex: 0 0 280px;                 /* fixed card width */
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 4px;
+}
+.catalog-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.catalog-cell { display: flex; flex-direction: column; }
+.catalog-cell .cell-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.catalog-cell .label-input { color: #6b7280; }
+.catalog-item video,
+.catalog-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f3f3f3;
+  display: block;
+}
+/* The single Loki output sits in a red-tinted box mirroring the SOTA
+   comparison "outputs" treatment, so the eye knows where the result is. */
+.catalog-output {
+  background: #fff5f5;
+  border: 1px solid rgba(185, 28, 28, 0.20);
+  border-radius: 8px;
+  padding: 6px;
+}
+.catalog-item figcaption {
+  font-size: 15px;
+  color: #555;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* ---------- SHARED: carousel-row layout (used by the catalogue) ---------- */
+.carousel-row { display: flex; align-items: stretch; gap: 0; }
+.carousel-row > .carousel-wrap { flex: 1 1 auto; min-width: 0; }
+
+/* ---------- COMPARISON TABLE (all baselines at once) ----------
+   7-column grid: [Inputs (stacked Ref + Driver) | Ours | X-Portrait |
+   HunyuanPortrait | EchoMimic | AniTalker | SadTalker].
+   Column ratio 1:2:2:2:2:2:2 — outputs are twice the width of the input
+   column, so the two stacked square inputs match an output square's height.
+   A vertical delineator sits between the inputs and outputs.  The Ours
+   cell carries a red border + halo so Loki visually leads every row. */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 2fr 2fr 2fr 2fr 2fr;
+  column-gap: 8px;
+  row-gap: 4px;
+  /* Center each sample row vertically so the output cells line up with the
+     middle of the stacked inputs (which are taller). */
+  align-items: center;
+}
+
+/* Header row */
+.compare-grid .col-head {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 6px 2px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 6px;
+  /* Sticky header so the column labels stay visible while the reader
+     scrolls down through samples. */
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 3;
+}
+.compare-grid .col-input     { color: #6b7280; }
+.compare-grid .col-base-head { color: #1d4ed8; }
+.compare-grid .col-ours-head {
+  color: #b91c1c;
+  border-bottom-color: rgba(185, 28, 28, 0.35);
+}
+.compare-grid .col-ours-head .loki-sub {
+  display: inline-block;
+  margin-left: 2px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.85;
+}
+
+/* Inputs column: two square tiles stacked. The 1.5fr column makes each tile
+   roughly 120 px wide; stacked, they form a column noticeably taller than a
+   single output square, which is fine — outputs vertically center against
+   the stack's middle line (align-items: center on the grid). */
+.compare-grid .input-stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+/* Vertical delineator between the Inputs column and the outputs strip.
+   Lives on the input-stack so it never affects the Ours cell width. */
+.compare-grid .input-stack::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: -8px;            /* halfway into the column-gap (8 px) */
+  width: 1px;
+  background: #d4d4d8;
+}
+.compare-grid .input-item { display: flex; flex-direction: column; }
+.compare-grid .input-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 3px;
+  text-align: center;
+}
+.compare-grid .input-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f3f3f3;
+  display: block;
+}
+/* Driver tile gets a green outline + soft halo so the viewer can tell at a
+   glance which clip is the motion source for every method in the row. */
+.compare-grid .input-item--driver img {
+  outline: 2px solid #16a34a;
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px #f0fdf4;
+}
+
+/* Output cells */
+.compare-grid .cell { display: flex; flex-direction: column; }
+.compare-grid .cell img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f3f3f3;
+  display: block;
+}
+
+/* Ours cell: red border + halo on the image. The border is drawn as an
+   `outline` so it sits OUTSIDE the box and doesn't shrink the rendered
+   image content vs. the unbordered baseline cells. The cell itself has no
+   padding/margin so its width matches every baseline cell exactly. */
+.compare-grid .cell-ours img {
+  outline: 2px solid #e63946;
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px #fff5f5;
+  border-radius: 6px;
+}
+
+.compare-grid .row-caption {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 15px;
+  color: #555;
+  margin: 6px 0 22px;
+}
+
+/* On narrower viewports the table starts to crush; allow horizontal scroll
+   while keeping the 1:2:... column rhythm. */
+@media (max-width: 1100px) {
+  .compare-grid {
+    grid-template-columns: minmax(90px, 1fr) repeat(6, minmax(180px, 2fr));
+    overflow-x: auto;
+  }
+}
+
+/* ---------- FOOTER ---------- */
+.back { text-align: center; margin-top: 48px; font-size: 15px; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+  .compare-row { grid-template-columns: 1fr; }
+  /* On narrow screens the 5x4 grid is fine; just tighten the gap. */
+  .teaser-grid { gap: 2px; padding: 2px; }
+}
+
