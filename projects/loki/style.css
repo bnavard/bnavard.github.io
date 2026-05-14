@@ -569,9 +569,9 @@ strong { font-size: inherit; }
   border-bottom: 1px solid #e5e7eb;
   margin-bottom: 6px;
   /* Sticky header so the column labels stay visible while the reader
-     scrolls down through samples. */
+     scrolls down through samples. Offset clears the fixed .site-header. */
   position: sticky;
-  top: 0;
+  top: 60px;
   background: #fff;
   z-index: 3;
 }
