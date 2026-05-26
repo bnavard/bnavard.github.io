@@ -275,6 +275,32 @@ strong { font-size: inherit; }
 }
 .teaser-title .venue { font-size: 15px; opacity: 0.85; margin: 6px 0 0; }
 
+/* "Paper" download button pinned to the right of the fixed site header. */
+.paper-download {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: #b91c1c;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 120ms, transform 120ms, box-shadow 120ms;
+}
+.paper-download:hover {
+  background: #991414;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(185, 28, 28, 0.25);
+}
+.paper-download:focus-visible {
+  outline: 2px solid #b91c1c;
+  outline-offset: 2px;
+}
+
 /* ---------- CONTENT ---------- */
 .content {
   max-width: var(--max-w);
@@ -711,6 +737,8 @@ strong { font-size: inherit; }
   .site-header .brand-mark-btn { width: 32px; height: 32px; }
   .site-header .brand-name     { font-size: 16px; }
   .site-nav                 { display: none; }
+  .paper-download           { padding: 6px 10px; font-size: 13px; }
+  .paper-download span      { display: none; }
 
   /* Summary cards. */
   .summary-item              { padding: 16px 16px 18px; }
