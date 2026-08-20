@@ -142,3 +142,27 @@ span.highlight {
     border-radius: 10px;
 }
 
+
+/* Slack-style animated loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-left: 4px;
+    vertical-align: -1px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    opacity: 0.65;
+    animation: loading-spinner-rotate 0.9s linear infinite;
+}
+
+@keyframes loading-spinner-rotate {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-spinner {
+        animation: none;
+    }
+}
